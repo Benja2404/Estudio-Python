@@ -21,6 +21,14 @@ def obtener_resultado():
     visor_calculadora.insert(0, resultado)
     operador = ''
 
+
+
+
+def revisar_check():
+    x = 0
+    for c in cuadros_comida:
+        if variables_comida[x].get() == 1:
+            cuadros_comida[x].config(state=NORMAL)
 # iniciar tkinter
 
 app = Tk()
@@ -127,7 +135,8 @@ for comida in lista_comidas:
                          font=('Dosis',19,'bold'),
                          onvalue=1, 
                          offvalue=0, 
-                         variable=variables_comida[contador])
+                         variable=variables_comida[contador],
+                         command=revisar_check)
     comida.grid(row=contador, 
                 column=0, 
                 sticky=W)
@@ -161,7 +170,7 @@ for bebida in lista_bebidas:
     variables_bebida.append('')
     variables_bebida[contador] = IntVar()
     bebida = Checkbutton(panel_bebidas, text=bebida.title(), font=('Dosis',19,'bold'),
-                         onvalue=1, offvalue=0, variable=variables_bebida[contador])
+                         onvalue=1, offvalue=0, variable=variables_bebida[contador], command=revisar_check)
     bebida.grid(row=contador, column=0, sticky=W)
 
     cuadros_bebida.append('')
@@ -189,7 +198,7 @@ for postre in lista_postres:
     variables_postres.append('')
     variables_postres[contador] = IntVar()
     postre = Checkbutton(panel_postres, text=postre.title(), font=('Dosis',19,'bold'),
-                         onvalue=1, offvalue=0, variable=variables_postres[contador])
+                         onvalue=1, offvalue=0, variable=variables_postres[contador], command=revisar_check)
     postre.grid(row=contador, column=0, sticky=W)
 
     cuadros_postre.append('')
